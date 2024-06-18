@@ -68,6 +68,6 @@ with statistics:
     st.write(f"累計回答数:{solved}")
     st.write(f"累計正解数:{correct}")
     st.write(f"累計誤答数:{mistakes}")
-    st.write(f"正答率:{correct_rate")
+    st.write(f"正答率:{correct_rate}")
     st.dataframe(top3)
     if st.button("更新"):pass # For refreshing
