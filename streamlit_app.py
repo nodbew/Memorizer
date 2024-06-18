@@ -5,7 +5,7 @@ import core.questions as questions
 import core.statistics as stats
 
 # Initializing session state
-if "questions" not jn st.session_state:
+if "questions" not in st.session_state:
     st.session_state.questions = np.array(
         [
     [], # Questions:list[str]
