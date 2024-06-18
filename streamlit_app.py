@@ -44,5 +44,4 @@ with main:
                 st.success("正解！")
             else:
                 st.error(f"不正解...正解は{st.session_state.questions[1][st.session_state.index]}")
-            
-    
+            st.session_state.wait = True
