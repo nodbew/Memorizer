@@ -35,14 +35,14 @@ def add_question(question:str, answers:str) -> None:
   Adds new questions and its answers.
   If thre is already the same question, update the answer.
   """
-  index = (st.session_state.questions[0] == question)[0]
+  index = (st.session_state.questions[0] == question.strip().lower())[0]
   if index == -1:
     st.session_state.questions = np.concatenate(
     [
       st.session_state.questions,
       np.array(
         [
-          question,
+          question.strip().lower(),
           [ans.strip().lower() for ans in answers.split(",")],
           0,
           0,
