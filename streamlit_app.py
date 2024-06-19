@@ -10,7 +10,7 @@ import core.statistics as stats
 if "questions" not in st.session_state:
     st.session_state.questions = np.array(
         [
-    ['Hello'], # Questions:list[str]
+    ['hello'], # Questions:list[str]
     [questions.List(['こんにちは', 'こんばんは'])], # Answers:list[list[str]]
     [0], # Count of correct answerinngs:[list[int]]
     [0], # Count of mistakes:list[int]
