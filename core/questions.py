@@ -42,7 +42,7 @@ def add_question(question:str, answers:str) -> None:
   If thre is already the same question, update the answer.
   """
   index = (st.session_state.questions[0] == question.strip().lower())[0]
-  if index == -1:
+  if len(index) == 0:
     st.session_state.questions = np.concatenate(
     [
       st.session_state.questions,
@@ -59,7 +59,7 @@ def add_question(question:str, answers:str) -> None:
     1,
   )
   else:
-    st.session_state.questions[1, index] = [ans.strip().lower() for ans in answers.split(',')]
+    st.session_state.questions[1][index] = List([ans.strip().lower() for ans in answers.split(',')])
 
   st.success("追加しました")
   return
