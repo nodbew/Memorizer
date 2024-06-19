@@ -26,7 +26,7 @@ def get_statistics():
     
   else:
     # Top three most mistaken questions
-    indices = np.argpartition(st.session_state.questions["問題", "誤答数", "誤答率"],[4], -3)[-3:]
+    indices = np.argpartition(st.session_state.questions[4], -3)[-3:]
     top_3_mistakes = pd.DataFrame(
       np.transpose(np.array(
         [
