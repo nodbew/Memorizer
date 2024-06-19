@@ -34,8 +34,9 @@ with main:
     else:
         st.write(st.session_state.questions[0][st.session_state.index])   
         st.session_state.input = st.text_input(label = "答え")
+
+
         if st.button("答える"):
-            st.session_state.count += 1
             result = questions.check_answer(st.session_state.input)
             
             if result:
@@ -46,6 +47,7 @@ with main:
                 st.session_state.questions[3][st.session_state.index] += 1
                 st.error(f"不正解...正解は{st.session_state.questions[1][st.session_state.index]}")
 
+            st.session_state.count += 1
             st.session_state.questions[4][st.session_state.index] = round(
                 st.session_state.questions[3][st.session_state.index] / (
                     st.session_state.questions[2][st.session_state.index] + st.session_state.questions[3][st.session_state.index]
@@ -75,9 +77,9 @@ with add:
 
 with statistics:
     solved, correct, mistakes, correct_rate, top3 = stats.get_statistics()
-    st.write(f"累計回答数:{solved}")
-    st.write(f"累計正解数:{correct}")
-    st.write(f"累計誤答数:{mistakes}")
-    st.write(f"正答率:{correct_rate}")
+    st.write(f"累計回答数:{solved}問")
+    st.write(f"累計正解数:{correct}問")
+    st.write(f"累計誤答数:{mistakes}問")
+    st.write(f"正答率:{correct_rate}％")
     st.dataframe(top3)
     if st.button("更新"):pass # For refreshing
