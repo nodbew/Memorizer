@@ -62,7 +62,7 @@ with add:
         try:
             st.write(st.session_state.questions)
             st.write(target.strip().lower())
-            questions.delete_question((st.session_state.questions[0] == target.strip().lower())[0])
+            questions.delete_question((st.session_state.questions[0] == target.strip().lower()).nonzero()[0])
             st.success("削除しました")
         except ValueError:
             st.error("その問題はありません")
