@@ -11,7 +11,7 @@ if "questions" not in st.session_state:
     st.session_state.questions = np.array(
         [
     ['Hello'], # Questions:list[str]
-    [['こんにちは', 'こんばんは']], # Answers:list[list[str]]
+    [questions.List(['こんにちは', 'こんばんは'])], # Answers:list[list[str]]
     [0], # Count of correct answerinngs:[list[int]]
     [0], # Count of mistakes:list[int]
     [0], # Mistake rate:int
