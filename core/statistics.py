@@ -16,9 +16,10 @@ def get_statistics():
     
     # Auto complete missing data by 'No Data'
     complement = np.array([['No Data'] * (3 - len(st.session_state.questions[0]))] * 5).reshape((5, -1))
+    st.write(complement)
     data = np.array([st.session_state.questions[0], st.session_state.questions[3], st.session_state.questions[4]])
     data = np.transpose(np.concatenate([data, complement], 1))
-                        
+
     top_3_mistakes = pd.DataFrame(
       data,
       columns = ["問題", "誤答数", "誤答率"],
