@@ -60,6 +60,8 @@ with add:
     target = st.text_input(label = "問題文", value = "削除したい問題を入力...")
     if st.button("削除"):
         try:
+            st.write(st.session_state.questions)
+            st.write(target.strip().lower()
             questions.delete_question((st.session_state.questions[0] == target.strip().lower())[0])
             st.success("削除しました")
         except ValueError:
