@@ -59,13 +59,13 @@ with add:
     st.header("問題の削除")
     target = st.text_input(label = "問題文", value = "削除したい問題を入力...")
     if st.button("削除"):
-        #try:
+        try:
             st.write(st.session_state.questions)
             st.write(target.strip().lower())
-            questions.delete_question((st.session_state.questions[0] == target.strip().lower()).nonzero()[0])
+            questions.delete_question(np.where(st.session_state.questions[0] == target.strip().lower())[0])
             st.success("削除しました")
-      #  except ValueError:
-       #     st.error("その問題はありません")
+        except ValueError:
+            st.error("その問題はありません")
 
 with statistics:
     solved, correct, mistakes, correct_rate, top3 = stats.get_statistics()
