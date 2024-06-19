@@ -41,7 +41,7 @@ def add_question(question:str, answers:str) -> None:
   Adds new questions and its answers.
   If thre is already the same question, update the answer.
   """
-  index = (st.session_state.questions[0] == question.strip().lower())[0]
+  index = np.where(st.session_state.questions[0] == question.strip().lower())[0]
   if len(index) == 0:
     st.session_state.questions = np.concatenate(
     [
