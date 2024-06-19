@@ -43,7 +43,7 @@ def add_question(question:str, answers:str) -> None:
       np.array(
         [
           question,
-          [ans.strip() for ans in answers.split(",")],
+          [ans.strip().lower() for ans in answers.split(",")],
           0,
           0,
           0,
@@ -53,7 +53,7 @@ def add_question(question:str, answers:str) -> None:
     1,
   )
   else:
-    st.session_state.questions[1, index] = [ans.strip() for ans in answers.split(',')]
+    st.session_state.questions[1, index] = [ans.strip().lower() for ans in answers.split(',')]
       
   return
 
