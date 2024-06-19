@@ -15,7 +15,7 @@ def get_statistics():
   if len(st.session_state.questions[0]) < 3:
     
     # Auto complete missing data by 'No Data'
-    complement = np.array([['No Data'] * (3 - len(st.session_state.questions[0]))] * 3).reshape((5, -1))
+    complement = np.array([['No Data'] * (3 - len(st.session_state.questions[0]))] * 3).reshape((3, -1))
     data = np.array([st.session_state.questions[0], st.session_state.questions[3], st.session_state.questions[4]])
     data = np.transpose(np.concatenate([data, complement], 1))
 
