@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-def get_stats():
+def get_statistics():
   # General statistics
   solved = st.session_state.count
   correct = solved - st.session_state.mistakes
