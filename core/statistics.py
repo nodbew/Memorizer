@@ -12,7 +12,7 @@ def get_statistics():
     correct_rate = correct / solved * 100
 
   # Top three most mostaken questions
-  if len(st.session_state.questions[0]) < -3:
+  if len(st.session_state.questions[0]) < 3:
     indices = np.array([0])
   else:
     indices = np.argpartition(st.session_state.questions[4], -3)[-3:]
