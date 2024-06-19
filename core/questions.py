@@ -1,6 +1,11 @@
 import numpy as np
 import streamlit as st
 
+class List(list):
+  def __init__(self, iterable):
+    super().__init__(iterable)
+    return
+
 def check_answer(user_input:str):
   """Checks if the user input matches any registered answer"""
   # Check answer
