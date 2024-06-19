@@ -57,7 +57,7 @@ with add:
     if st.button("削除"):
         try:
             questions.delete_question(np.where(st.session_state.questions[0] == target.strip().lower())[0])
-            st.success("削除しました")
+            st.success('削除しました')
         except ValueError:
             st.error("その問題はありません")
 
