@@ -54,9 +54,11 @@ def add_question(question:str, answers:str) -> None:
   )
   else:
     st.session_state.questions[1, index] = [ans.strip().lower() for ans in answers.split(',')]
-      
+
+  st.success("追加しました")
   return
 
 def delete_question(index:int):
   del st.session_state.questions[:, index]
+  st.success("削除しました")
   return
