@@ -8,7 +8,10 @@ import streamlit as st
 def to_file():
     return json.dumps(st.session_state.questions.tolist())
 
-def from_file(uploaded:st.UploadedFile):
+def from_file(uploaded):
+    '''
+    Takes a st.UploadedFile object, reads it, and adds the data to the questions array.
+    '''
     uploaded = StringIO(uploaded.getvalue().decode('utf-8')).read()
     try:
         arr = json.loads(uploaded)
