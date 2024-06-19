@@ -49,7 +49,7 @@ def add_question(question:str, answers:str) -> None:
       np.array(
         [
           [question.strip().lower()],
-          [List([ans.strip().lower() for ans in answers.split(",")])],
+          [List([ans.strip().lower() for ans in answers.split("、")])],
           [0],
           [0],
           [0],
