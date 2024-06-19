@@ -5,6 +5,7 @@ import streamlit as st
 
 import core.questions as questions
 import core.statistics as stats
+import core.datas as datas
 
 # Initializing session state
 if "questions" not in st.session_state:
@@ -26,7 +27,7 @@ if "index" not in st.session_state:
 if "input" not in st.session_state:
     st.session_state.input = ""
 
-main, add, statistics = st.tabs(["出題", "問題集", "成績"])
+main, add, statistics, files = st.tabs(["出題", "問題集", "成績", '保存'])
 
 with main:
     if len(st.session_state.questions[0]) == 0:
@@ -83,3 +84,9 @@ with statistics:
     st.write(f"正答率:{correct_rate}％")
     st.dataframe(top3)
     if st.button("更新"):pass # For refreshing
+
+with files:
+    st.download_button(label = 'ダウンロード', data = datas.to_file())
+    uploaded = st.file_uploader(label = 'アップロード')
+    if uploaded is not None:
+        datas.from_file(uploaded)
