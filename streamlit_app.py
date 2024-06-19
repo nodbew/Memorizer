@@ -35,7 +35,7 @@ with main:
         st.error('問題がありません  \n問題を追加してください')
     else:
         st.session_state.index = random.randrange(0, len(st.session_state.questions[0]))
-        st.write(st.session_state.questions[0][st.session_state.index]       
+        st.write(st.session_state.questions[0][st.session_state.index])   
         st.session_state.input = st.text_input(label = "答え")
         if st.button("答える"):
             result = questions.check_answer(st.session_state.input)
