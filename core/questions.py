@@ -16,7 +16,7 @@ def check_answer(user_input:str):
   """Checks if the user input matches any registered answer"""
   # Check answer
   correct = st.session_state.questions[1][st.session_state.index]
-  result = (user_input in correct)
+  result = (user_input.lower() in correct)
 
   # Update counts
   questions = st.session_state.questions
