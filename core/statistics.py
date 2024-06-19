@@ -13,15 +13,19 @@ def get_statistics():
 
   # Top three most mostaken questions
   if len(st.session_state.questions[0]) < 3:
+    
     # Auto complete missing data by 'No Data'
     complement = np.array([['No Data'] * (3 - len(st.session_state.questions[0]))])
     data = np.array([st.session_state.questions[0], st.session_state.questions[3], st.session_state.questions[4]])
     data = np.transpose(np.concatenate([data, complement], 1)
+                        
     top_3_mistakes = pd.DataFrame(
       data,
       columns = ["問題", "誤答数", "誤答率"],
     )
+    
   else:
+    # Top three most mistaken questions
     indices = np.argpartition(st.session_state.questions["問題", "誤答数", "誤答率"],[4], -3)[-3:]
     top_3_mistakes = pd.DataFrame(
       np.transpose(np.array(
