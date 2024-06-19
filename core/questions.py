@@ -24,16 +24,6 @@ def check_answer(user_input:str):
   correct = st.session_state.questions[1][st.session_state.index]
   result = (user_input.lower() in correct)
 
-  # Update counts
-  questions = st.session_state.questions
-  index = st.session_state.index
-  if correct:
-    st.session_state.questions[2][index] += 1
-  else:
-    st.session_state.questions[3][index] += 1
-    
-  st.session_state.questions[4][index] = round(questions[3][index] / (questions[2][index] + questions[3][index]))
-
   return result
 
 def add_question(question:str, answers:str) -> None:
