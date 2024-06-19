@@ -48,11 +48,11 @@ def add_question(question:str, answers:str) -> None:
       st.session_state.questions,
       np.array(
         [
-          question.strip().lower(),
-          List([ans.strip().lower() for ans in answers.split(",")]),
-          0,
-          0,
-          0,
+          [question.strip().lower()],
+          [List([ans.strip().lower() for ans in answers.split(",")])],
+          [0],
+          [0],
+          [0],
         ]
       ),
     ],
