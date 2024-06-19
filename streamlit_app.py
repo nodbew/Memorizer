@@ -54,7 +54,7 @@ with add:
     st.info("答えは、で区切って入れてください")
     answers = st.text_input(label = "答え", value = "こんにちは、こんばんは")
     if st.button("追加"):
-        question.add_auestion(question, answers)
+        question.add_question(question, answers)
 
     st.header("問題の削除")
     target = st.text_input(label = "問題文", value = "削除したい問題を入力...")
