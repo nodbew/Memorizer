@@ -32,7 +32,7 @@ def check_answer(user_input:str):
   else:
     st.session_state.questions[3][index] += 1
     
-  st.session_state.questions[4][index] = int(questions[3][index] / (questions[2][index] + questions[3][index]))
+  st.session_state.questions[4][index] = round(questions[3][index] / (questions[2][index] + questions[3][index]))
 
   return result
 
