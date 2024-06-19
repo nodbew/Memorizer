@@ -36,4 +36,4 @@ def get_statistics():
         ])),
       columns = ["問題", "誤答数", "誤答率"],
     )
-  return solved, correct, st.session_state.mistakes, correct_rate, top_3_mistakes
+  return solved, correct, st.session_state.mistakes, round(correct_rate), top_3_mistakes
