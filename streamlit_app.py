@@ -48,7 +48,7 @@ with main:
                 st.error(f"不正解...正解は{st.session_state.questions[1][st.session_state.index]}")
 
             st.session_state.count += 1
-            st.write('reached')
+            st.write(st.session_state.questions)
             st.session_state.questions[4][st.session_state.index] = round(
                 st.session_state.questions[3][st.session_state.index] / (
                     st.session_state.questions[2][st.session_state.index] + st.session_state.questions[3][st.session_state.index]
