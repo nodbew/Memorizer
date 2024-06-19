@@ -12,6 +12,12 @@ class List():
   def __contains__(self, value):
     return (value in self._value)
 
+  def __repr__(self):
+    return repr(self._value)
+
+  def __str__(self):
+    return str(self._value)
+
 def check_answer(user_input:str):
   """Checks if the user input matches any registered answer"""
   # Check answer
