@@ -49,14 +49,14 @@ def add_question(question:str, answers:str) -> None:
       np.array(
         [
           question.strip().lower(),
-          [ans.strip().lower() for ans in answers.split(",")],
+          List([ans.strip().lower() for ans in answers.split(",")]),
           0,
           0,
           0,
         ]
       ),
     ],
-    1,
+    axis = 1,
   )
   else:
     st.session_state.questions[1][index] = List([ans.strip().lower() for ans in answers.split(',')])
