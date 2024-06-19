@@ -10,11 +10,11 @@ import core.statistics as stats
 if "questions" not in st.session_state:
     st.session_state.questions = np.array(
         [
-    [], # Questions:list[str]
-    [], # Answers:list[list[str]]
-    [], # Count of correct answerinngs:[list[int]]
-    [], # Count of mistakes:list[int]
-    [], # Mistake rate:int
+    ['Hello'], # Questions:list[str]
+    [['こんにちは', 'こんばんは']], # Answers:list[list[str]]
+    [0], # Count of correct answerinngs:[list[int]]
+    [0], # Count of mistakes:list[int]
+    [0], # Mistake rate:int
         ]
     )
 if "count" not in st.session_state:
@@ -37,7 +37,7 @@ with main:
             st.session_state.wait = False
             st.rerun()
     else:
-        st.session_state.index = random.randint(0, len(st.session_state.questions[0]))
+        st.session_state.index = random.randrange(0, len(st.session_state.questions[0]))
         st.write(st.session_state.questions[0][st.session_state.index])
         st.session_state.input = st.text_input(label = "答え")
         if st.button("答える"):
