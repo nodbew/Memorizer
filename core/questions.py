@@ -1,10 +1,16 @@
 import numpy as np
 import streamlit as st
 
-class List(list):
+class List():
   def __init__(self, iterable):
-    super().__init__(iterable)
+    self._value = list(iterable)
     return
+
+  def __getitem__(self, index):
+    return self._value[index]
+
+  def __contains__(self, value):
+    return (value in self._value)
 
 def check_answer(user_input:str):
   """Checks if the user input matches any registered answer"""
