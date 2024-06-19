@@ -25,8 +25,6 @@ if "index" not in st.session_state:
     st.session_state.index = 0
 if "input" not in st.session_state:
     st.session_state.input = ""
-if "wait" not in st.session_state:
-    st.session_state.wait = False
 
 main, add, statistics = st.tabs(["出題", "問題集", "成績"])
 
@@ -37,11 +35,14 @@ with main:
         st.write(st.session_state.questions[0][st.session_state.index])   
         st.session_state.input = st.text_input(label = "答え")
         if st.button("答える"):
+            st.session_state.count += 1
             result = questions.check_answer(st.session_state.input)
             if result:
                 st.success("正解！")
             else:
+                st.session_state.mistakes += 1
                 st.error(f"不正解...正解は{st.session_state.questions[1][st.session_state.index]}")
+                
         if st.button('次へ'):
             st.session_state.index = random.randrange(0, len(st.session_state.questions[0]))
             st.rerun()
