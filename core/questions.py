@@ -31,8 +31,13 @@ def check_answer(user_input:str):
   return result
 
 def add_question(question:str, answers:str) -> None:
-  """Adds new questions and its answers"""
-  st.session_state.questions = np.concatenate(
+  """
+  Adds new questions and its answers.
+  If thre is already the same question, update the answer.
+  """
+  index = st.session_state.questioms[0].find(question)
+  if index == -1:
+    st.session_state.questions = np.concatenate(
     [
       st.session_state.questions,
       np.array(
@@ -47,6 +52,8 @@ def add_question(question:str, answers:str) -> None:
     ],
     1,
   )
+  else:
+    st.session_state.questions[1, index] = [ans.strip() for ans in answers.split(',')]
       
   return
 
