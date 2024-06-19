@@ -66,5 +66,6 @@ def add_question(question:str, answers:str) -> None:
 
 def delete_question(index:int):
   st.session_state.questions = np.delete(st.session_state.questions, index, 1)
+  st.write(st.session_state.questions)
   st.success("削除しました")
   return
