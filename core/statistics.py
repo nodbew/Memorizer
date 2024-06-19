@@ -6,7 +6,10 @@ def get_statistics():
   # General statistics
   solved = st.session_state.count
   correct = solved - st.session_state.mistakes
-  correct_rate = correct / solved * 100
+  if solved == 0:
+    correct_rate = 0
+  else:
+    correct_rate = correct / solved * 100
 
   # Top three most mostaken questions
   indices = np.argpartition(st.session_state.questions[4], -3)[-3:]
