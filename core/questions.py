@@ -28,11 +28,11 @@ def check_answer(user_input:str):
   questions = st.session_state.questions
   index = st.session_state.index
   if correct:
-    questions[2][index] += 1
+    st.session_state.questions[2][index] += 1
   else:
-    questions[3][index] += 1
+    st.session_state.questions[3][index] += 1
     
-  questions[4][index] = int(questions[3][index] / (questions[2][index] + questions[3][index]))
+  st.session_state.questions[4][index] = int(questions[3][index] / (questions[2][index] + questions[3][index]))
 
   return result
 
