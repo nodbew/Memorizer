@@ -39,8 +39,10 @@ with main:
             result = questions.check_answer(st.session_state.input)
             if result:
                 st.success("正解！")
+                st.session_state.questions[2][st.session_state.index] += 1
             else:
                 st.session_state.mistakes += 1
+                st.session_state.questions[3][st.session_state.index] += 1
                 st.error(f"不正解...正解は{st.session_state.questions[1][st.session_state.index]}")
                 
         if st.button('次へ'):
