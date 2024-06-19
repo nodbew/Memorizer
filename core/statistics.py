@@ -17,11 +17,12 @@ def get_statistics():
   else:
     indices = np.argpartition(st.session_state.questions[4], -3)[-3:]
   top_3_mistakes = pd.DataFrame(
+    np.transpose(np.array(
     [
       st.session_state.questions[0][indices],
       st.session_state.questions[3][indices],
       st.session_state.questions[4][indices],
-    ],
+    ])),
     columns = ["問題", "誤答数", "誤答率"],
   )
   return solved, correct, st.session_state.mistakes, correct_rate, top_3_mistakes
