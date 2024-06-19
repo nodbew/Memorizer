@@ -51,9 +51,8 @@ with main:
             st.session_state.questions[4][st.session_state.index] = round(
                 st.session_state.questions[3][st.session_state.index] / (
                     st.session_state.questions[2][st.session_state.index] + st.session_state.questions[3][st.session_state.index]
-                )
+                ) * 100
             )
-            st.write(st.session_state.questions)
                 
         if st.button('次へ'):
             st.session_state.index = random.randrange(0, len(st.session_state.questions[0]))
