@@ -24,13 +24,15 @@ def add_question(question:str, answers:str) -> None:
   st.session_state.questions = np.concatenate(
     [
       st.session_state.questions,
-      np.array([
+      np.array(
+        [
           question,
-          [ans.strip() for ans in answers.split(","),
+          [ans.strip() for ans in answers.split(",")],
           0,
           0,
           0,
-        ]),
+        ]
+      ),
     ],
     1,
   )
