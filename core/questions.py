@@ -61,5 +61,4 @@ def delete_question(index:int):
   if len(index) == 0:
     raise ValueError() # To be catched in the main file(streamlit_app.py)
   st.session_state.questions = np.delete(st.session_state.questions, index, 1)
-  st.write(st.session_state.questions)
   return
