@@ -23,11 +23,10 @@ class CustomListEncoder(json.JSONEncoder):
 
 class CustomEncoder(NumpyArrayEncoder, CustomListEncoder):pass
 
-def custom_List_decode(obj:list) -> questions.List:
-    return questions.List(obj)
-
 def ndarray_decode(obj:list) -> np.ndarray:
-    obj[1] = [custom_List_decode(l) for l in obj[1]]
+    st.write(obj[1])
+    st.write([questions.List(l) for l in obj[1]])
+    obj[1] = [questions.List(l) for l in obj[1]]
     return np.array(obj).reshape((5, -1))
 
 @st.cache_data
