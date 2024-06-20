@@ -21,6 +21,10 @@ class List():
   def getlist(self) -> list:
     return self._value
 
+  def extend(self, other:List) -> None:
+    self._value.extend(other.getlist())
+    return
+
 def check_answer(user_input:str):
   """Checks if the user input matches any registered answer"""
   # Check answer
