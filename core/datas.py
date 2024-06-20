@@ -7,14 +7,14 @@ import streamlit as st
 
 from . import questions
 
-class NumpyArrayEncoder(JSONEncoder):
+class NumpyArrayEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, np.ndarray):
             return obj.tolist()
         else:
             return super().default(obj)
 
-class CustomListEncoder(JSONEncoder):
+class CustomListEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, questions.List):
             return obj.getlist()
