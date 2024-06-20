@@ -95,10 +95,14 @@ with statistics:
 
 with files:
     st.info('問題データや成績などが保存されます')
+    if len(st.session_state.questions[0]) > 0:
+        name = f'Memorizer-Data-{st.session_state.questions[0][st.session_state.index]}.json'
+    else:
+        name = 'Memorizer-Data.json'
     st.download_button(
         label = 'ダウンロード', 
         data = datas.to_file(), 
-        file_name = f'Memorizer-Data-{st.session_state.questions[0][st.session_state.index]}.json'
+        file_name = name,
     )
     uploaded = st.file_uploader(label = 'アップロード')
     if uploaded is not None:
