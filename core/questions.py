@@ -21,7 +21,7 @@ class List():
   def getlist(self) -> list:
     return self._value
 
-  def extend(self, other:List) -> None:
+  def extend(self, other) -> None:
     self._value.extend(other.getlist())
     return
 
