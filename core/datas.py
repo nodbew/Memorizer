@@ -44,6 +44,8 @@ def from_file(uploaded):
         st.error('無効なファイル形式です')
         return
 
+    
+
     st.session_state.questions = np.concatenate([st.session_state.questions, arr], 1)
 
     # Update counters
