@@ -6,17 +6,20 @@ class List():
     self._value = list(iterable)
     return
 
-  def __getitem__(self, index):
+  def __getitem__(self, index) -> object:
     return self._value[index]
 
-  def __contains__(self, value):
+  def __contains__(self, value) -> bool:
     return (value in self._value)
 
-  def __repr__(self):
+  def __repr__(self) -> str:
     return repr(self._value)
 
-  def __str__(self):
+  def __str__(self) -> str:
     return str(self._value)
+
+  def getlist(self) -> list:
+    return self._value
 
 def check_answer(user_input:str):
   """Checks if the user input matches any registered answer"""
