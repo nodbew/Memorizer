@@ -40,7 +40,7 @@ def from_file(uploaded):
     '''
     uploaded = StringIO(uploaded.getvalue().decode('utf-8')).read()
     arr = np.array(json.loads(uploaded, object_hook = ndarray_decode)).reshape((5, -1))
-'''    try:
+    '''try:
         arr = json.loads(uploaded, object_hook = ndarray_decode)
         arr = np.array(arr).reshape((5, -1))
         
