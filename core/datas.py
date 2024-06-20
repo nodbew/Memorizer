@@ -51,8 +51,8 @@ def from_file(uploaded):
 
     # Replace overlapping questions' answers with a new concatenated answers list
     questions = np.concatenate([st.session_state.questions, np.array([['\n'], [List([])], [0], [0], [0]])], 1) # To absorb all elements that are not overlapping 
-    sorter = np.argsort(st.session_state.questions)
-    old_arr_indices = sorter[np.searchsorted(st.session_state.questions, arr, sorter = sorter)]
+    sorter = np.argsort(st.session_state.questions[0])
+    old_arr_indices = sorter[np.searchsorted(st.session_state.questions[0], arr[0], sorter = sorter)]
     old_arr_indices = np.where((old_arr_indices == 0 | old_arr_indices == len(st.session_state.questions), -1, old_arr_indices)) # Replace all indices that are not overlapping with -1
 
     # Replace answers
