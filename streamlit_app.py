@@ -86,7 +86,12 @@ with statistics:
     if st.button("更新"):pass # For refreshing
 
 with files:
-    st.download_button(label = 'ダウンロード', data = datas.to_file())
+    st.info('問題データや成績などが保存されます')
+    st.download_button(
+        label = 'ダウンロード', 
+        data = datas.to_file(), 
+        file_name = f'Memorizer-Data-{st.session_state.questions[0][st.session_state.index]}.json'
+    )
     uploaded = st.file_uploader(label = 'アップロード')
     if uploaded is not None:
         datas.from_file(uploaded)
