@@ -27,6 +27,8 @@ if "index" not in st.session_state:
     st.session_state.index = 0
 if "input" not in st.session_state:
     st.session_state.input = ""
+if 'last_uploaded_file_name' not in st.session_state:
+    st.session_state.last_uploaded_file_name = ''
 
 main, add, statistics, files = st.tabs(["出題", "問題集", "成績", '保存'])
 
@@ -105,5 +107,6 @@ with files:
         file_name = name,
     )
     uploaded = st.file_uploader(label = 'アップロード')
-    if uploaded is not None:
+    if uploaded is not None and uploaded.name != st.session_state.last_uploaded_file_name:
+        st.session_state.last_uploaded_file_name = uploaded.name
         datas.from_file(uploaded)
