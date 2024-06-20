@@ -76,6 +76,8 @@ with add:
         try:
             questions.delete_question(np.where(st.session_state.questions[0] == target.strip().lower())[0])
             st.success('削除しました')
+            st.session_state.index = random.randrange(0, len(st.session_state.questions[0]))
+            st.rerun()
         except ValueError:
             st.error("その問題はありません")
 
