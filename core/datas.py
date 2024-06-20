@@ -23,10 +23,6 @@ class CustomListEncoder(json.JSONEncoder):
 
 class CustomEncoder(NumpyArrayEncoder, CustomListEncoder):pass
 
-def ndarray_decode(obj:list) -> np.ndarray:
-    obj[1] = [questions.List(l) for l in obj[1]]
-    return np.array(obj).reshape((5, -1))
-
 @st.cache_data
 def to_file():
     return json.dumps(st.session_state.questions, cls = CustomEncoder)
@@ -35,10 +31,10 @@ def from_file(uploaded):
     '''
     Takes a st.UploadedFile object, reads it, and adds the data to the questions array.
     '''
-    uploaded = StringIO(uploaded.getvalue().decode('utf-8')).read()
-    arr = json.loads(uploaded, object_hook = ndarray_decode)
-    st.write(arr)
-    arr = np.array(arr).reshape((5, -1))
+    uploaded:str = StringIO(uploaded.getvalue().decode('utf-8')).read()
+    arr:list = json.loads(uploaded)
+    arr[1]:list = [questions.List(l) for l in arr[1]]
+    arr:np.ndarray = np.array(arr).reshape((5, -1))
     '''try:
         arr = json.loads(uploaded, object_hook = ndarray_decode)
         arr = np.array(arr).reshape((5, -1))
