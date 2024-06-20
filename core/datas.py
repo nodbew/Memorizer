@@ -31,12 +31,10 @@ def from_file(uploaded):
     Takes a st.UploadedFile object, reads it, and adds the data to the questions array.
     '''
     uploaded:str = StringIO(uploaded.getvalue().decode('utf-8')).read()
-    arr:list = json.loads(uploaded)
-    arr[1]:list = [questions.List(l) for l in arr[1]]
-    arr:np.ndarray = np.array(arr).reshape((5, -1))
-    '''try:
-        arr = json.loads(uploaded, object_hook = ndarray_decode)
-        arr = np.array(arr).reshape((5, -1))
+    try:
+        arr:list = json.loads(uploaded)
+        arr[1]:list = [questions.List(l) for l in arr[1]]
+        arr:np.ndarray = np.array(arr).reshape((5, -1))
         
     except json.JSONDecodeError:
         st.error('無効なファイル形式です')
@@ -44,7 +42,7 @@ def from_file(uploaded):
         
     except ValueError:
         st.error('無効なファイル形式です')
-        return'''
+        return
 
     st.session_state.questions = np.concatenate([st.session_state.questions, arr], 1)
 
