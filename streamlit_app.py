@@ -76,6 +76,12 @@ with add:
         except ValueError:
             st.error("その問題はありません")
 
+    st.header('問題一覧')
+    st.dataframe(pd.DataFrame(
+        st.session_state.questions.T,
+        columns = ['問題', '解答', '正答数', '誤答数', '誤答率'],
+    ))
+
 with statistics:
     solved, correct, mistakes, correct_rate, top3 = stats.get_statistics()
     st.write(f"累計回答数:{solved}問")
