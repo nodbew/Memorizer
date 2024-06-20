@@ -16,7 +16,7 @@ class NumpyArrayEncoder(json.JSONEncoder):
 
 class CustomListEncoder(json.JSONEncoder):
     def default(self, obj):
-        if isinstance(obj, questions.List):
+        if isinstance(obj, List):
             return obj.getlist()
         else:
             return super().default(obj)
