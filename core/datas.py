@@ -43,7 +43,7 @@ def from_file(uploaded):
         arr = json.loads(uploaded, object_hook = ndarray_decode)
         arr = np.array(arr).reshape((5, -1))
         
-    except JSONDecodeError:
+    except json.JSONDecodeError:
         st.error('無効なファイル形式です')
         return
         
