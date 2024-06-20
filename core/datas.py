@@ -23,7 +23,6 @@ class CustomListEncoder(json.JSONEncoder):
 
 class CustomEncoder(NumpyArrayEncoder, CustomListEncoder):pass
 
-@st.cache_data
 def to_file():
     return json.dumps(st.session_state.questions, cls = CustomEncoder)
 
