@@ -5,7 +5,7 @@ from io import StringIO
 import numpy as np
 import streamlit as st
 
-from . import questions
+from . import questions as questions
 
 class NumpyArrayEncoder(json.JSONEncoder):
     def default(self, obj):
