@@ -40,9 +40,7 @@ def add_question(question:str, answers:str) -> None:
   """
   index = np.where(st.session_state.questions[0] == question.strip().lower())[0]
   if len(index) == 0:
-    new = [
-      st.session_state.questions,
-      np.array(
+    new = np.array(
         [
           [question.strip().lower()],
           [List([ans.strip().lower() for ans in answers.split("、")])],
@@ -50,8 +48,7 @@ def add_question(question:str, answers:str) -> None:
           [0],
           [0],
         ]
-      ),
-    ]
+      )
     index = np.searchsorted(st.session_state.questions[0], new[0])
     st.session_state.questions = np.insert(st.session_state.questions, index, new, axis = 1)
   else:
