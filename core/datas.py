@@ -50,18 +50,19 @@ def from_file(uploaded):
         return
 
     # Replace overlapping questions' answers with a new concatenated answers list
-    questions = np.concatenate([st.session_state.questions, np.array([['\n'], [List([])], [0], [0], [0]])], 1) # To absorb all elements that are not overlapping 
-    sorter = np.argsort(st.session_state.questions[0])
-    old_arr_indices = sorter[np.searchsorted(st.session_state.questions[0], arr[0], sorter = sorter)]
-    old_arr_indices = np.where((old_arr_indices == 0 | old_arr_indices == len(st.session_state.questions), -1, old_arr_indices)) # Replace all indices that are not overlapping with -1
+    overlapping_old_arr_indices = np.isin(st.session_state.questions, arr, assume_unique = True)
+    overlapping_new_arr_indices = np.isin(arr, st.session_state.questions, assume_unique = True)
+    # The arrays should be sorted
+    _extend_Lists(st.session_state.questions[overlapping_old_arr_indices], arr[overlapping_new_arr_indices])
+    del arr[overlapping_new_arr_indices] # Delete unneeded columnd
 
-    # Replace answers
-    old_overlapping_array = st.session_state.questions[:, old_arr_indices]
-    _extend_Lists(arr[1], old_overlapping_array[1])
+    # Concatenate arrays
+    questions = np.concatenate(st.session_state.questions, arr)
+    st.session_state.questions = questions[np.argsort(questions[0])]
 
     # Update counts
-    arr[2:4] += old_overlapping_array[2:4]
-    arr[4] = np.round(arr[3] / (arr[2] + arr[3]))
+    st.session_state.count += np.sum(arr[2:4])
+    st.session_state.mistakes += np.sum(arr[4])
 
     # Delete old datas
     if -1 not in old_arr_indices:
