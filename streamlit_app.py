@@ -18,7 +18,7 @@ if "questions" not in st.session_state:
     [], # Count of mistakes:list[int]
     [], # Mistake rate:int
         ]
-    )
+    ,dtype = 'object')
 if "count" not in st.session_state:
     st.session_state.count = 0
 if "mistakes" not in st.session_state:
