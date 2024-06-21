@@ -12,11 +12,11 @@ import core.datas as datas
 if "questions" not in st.session_state:
     st.session_state.questions = np.array(
         [
-    ['hello'], # Questions:list[str]
-    [questions.List(['こんにちは', 'こんばんは'])], # Answers:list[list[str]]
-    [0], # Count of correct answerinngs:[list[int]]
-    [0], # Count of mistakes:list[int]
-    [0], # Mistake rate:int
+    [], # Questions:list[str]
+    [], # Answers:list[list[str]]
+    [], # Count of correct answerinngs:[list[int]]
+    [], # Count of mistakes:list[int]
+    [], # Mistake rate:int
         ]
     )
 if "count" not in st.session_state:
