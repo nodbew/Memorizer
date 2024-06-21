@@ -50,11 +50,11 @@ def from_file(uploaded):
         return
 
     # Replace overlapping questions' answers with a new concatenated answers list
-    overlapping_old_arr_indices = np.isin(st.session_state.questions, arr, assume_unique = True)
-    overlapping_new_arr_indices = np.isin(arr, st.session_state.questions, assume_unique = True)
+    overlapping_old_arr_indices = np.isin(st.session_state.questions[0], arr[0], assume_unique = True)
+    overlapping_new_arr_indices = np.isin(arr[0], st.session_state.questions[0], assume_unique = True)
     # The arrays should be sorted
     _extend_Lists(st.session_state.questions[1][overlapping_old_arr_indices], arr[1][overlapping_new_arr_indices])
-    del arr[overlapping_new_arr_indices] # Delete unneeded columnd
+    del arr[overlapping_new_arr_indices] # Delete unneeded column
 
     # Concatenate arrays
     questions = np.concatenate(st.session_state.questions, arr)
