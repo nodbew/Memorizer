@@ -54,22 +54,15 @@ def from_file(uploaded):
     overlapping_new_arr_indices = np.isin(arr[0], st.session_state.questions[0], assume_unique = True)
     # The arrays should be sorted
     _extend_Lists(st.session_state.questions[1][overlapping_old_arr_indices], arr[1][overlapping_new_arr_indices])
-    del arr[overlapping_new_arr_indices] # Delete unneeded column
+    np.delete(arr, overlapping_new_arr_indices) # Delete unneeded column
 
     # Concatenate arrays
-    questions = np.concatenate(st.session_state.questions, arr)
+    questions = np.concatenate([st.session_state.questions, arr], 1)
     st.session_state.questions = questions[np.argsort(questions[0])]
 
     # Update counts
     st.session_state.count += np.sum(arr[2:4])
     st.session_state.mistakes += np.sum(arr[4])
-
-    # Delete old datas
-    if -1 not in old_arr_indices:
-        del st.session_state.qestions[-1]
-    del st.session_state.questions[old_arr_indices]
-
-    st.session_state.questions = np.concatenate([st.session_state.questions, arr], 1)
 
     # Update counters
     st.session_state.count += np.sum(arr[2:4])
