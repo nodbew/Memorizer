@@ -59,9 +59,9 @@ def from_file(uploaded):
         _extend_Lists(st.session_state.questions[1][overlapping_old_arr_indices], arr[1][overlapping_new_arr_indices])
         np.delete(arr, overlapping_new_arr_indices.nonzero()) # Delete unneeded column
 
-     # Concatenate arrays
-     questions = np.concatenate([st.session_state.questions, arr], 1)
-     st.session_state.questions = questions[np.argsort(questions[0])]
+    # Concatenate arrays
+    questions = np.concatenate([st.session_state.questions, arr], 1)
+    st.session_state.questions = questions[np.argsort(questions[0])]
 
     # Update counts
     st.session_state.count += np.sum(arr[2:4])
