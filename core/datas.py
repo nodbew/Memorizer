@@ -61,7 +61,7 @@ def from_file(uploaded):
 
     # Concatenate arrays
     questions = np.concatenate([st.session_state.questions, arr], 1)
-    st.session_state.questions = questions[np.argsort(questions[0])]
+    st.session_state.questions = questions[:, np.argsort(questions[0])]
 
     # Update counts
     st.session_state.count += np.sum(arr[2:4])
